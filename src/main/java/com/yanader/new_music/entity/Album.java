@@ -23,6 +23,7 @@ public class Album {
     private Long artistId;
     @Column(name="set_id")
     private Long setId;
+    @Column(columnDefinition = "SMALLINT")
     private Integer rating;
     private String notes;
     @Column(name="listened_on")
