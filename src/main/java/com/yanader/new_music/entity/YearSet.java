@@ -17,8 +17,10 @@ public class YearSet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column(name="listening_year",columnDefinition = "SMALLINT")
     private Integer listeningYear;
+
     @Column(name="release_year",columnDefinition = "SMALLINT")
     private Integer releaseYear;
 }

@@ -19,16 +19,25 @@ public class Album {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name="artist_id")
-    private Long artistId;
+
+    @ManyToOne
+    @JoinColumn(name="artist_id")
+    private Artist artist;
+
     private String name;
-    @Column(name="set_id")
-    private Long setId;
+
+    @ManyToOne
+    @JoinColumn(name="set_id")
+    private YearSet yearSet;
+
     @Column(columnDefinition = "SMALLINT")
     private Integer rating;
+
     private String notes;
+
     @Column(name="listened_on")
     private LocalDate listenedOn;
+
     @Column(name="spotify_album_id")
     private String spotifyAlbumId;
 }

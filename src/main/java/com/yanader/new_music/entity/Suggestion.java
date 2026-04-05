@@ -17,8 +17,12 @@ public class Suggestion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name="contributor_id")
-    private Long contributorId;
-    @Column(name="album_id")
-    private Long albumId;
+
+    @ManyToOne
+    @JoinColumn(name = "contributor_id")
+    private Contributor contributor;
+
+    @ManyToOne
+    @JoinColumn(name = "album_id")
+    private Album album;
 }
