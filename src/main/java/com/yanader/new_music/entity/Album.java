@@ -21,6 +21,7 @@ public class Album {
     private Long id;
     @Column(name="artist_id")
     private Long artistId;
+    private String name;
     @Column(name="set_id")
     private Long setId;
     @Column(columnDefinition = "SMALLINT")
