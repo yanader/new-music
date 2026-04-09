@@ -53,7 +53,7 @@ public class YearStats {
 
         this.mode = tempMode;
         this.median = median(filteredAlbums);
-        this.stdDev = stdDev(albums);
+        this.stdDev = stdDev(filteredAlbums);
 
     }
 
@@ -69,8 +69,18 @@ public class YearStats {
     }
 
     private Double stdDev(List<Album> albums){
-        //TODO
-        return -1.0;
+        List<Integer> ratings = albums.stream().map(Album::getRating).toList();
+        if (ratings.size() < 2) return 0.0;
+
+        double mean = ratings.stream().mapToDouble(i -> i).average().orElse(0.0);
+
+        double variance = 0.0;
+        for (int num : ratings) {
+            variance += Math.pow(num - mean, 2);
+        }
+        variance /= (ratings.size() - 1);
+
+        return Math.sqrt(variance);
     }
 
 }
