@@ -10,4 +10,6 @@ public interface AlbumService {
     List<Album> getAlbumsByListeningYear(int listeningYear);
     List<Album> getAlbumsByReleaseYear(int releaseYear);
     Optional<Album> getAlbumById(Long id);
+    List<Album> getAlbumsByListeningYear(Integer listeningYear);
+    List<Album> getAlbumsByReleaseYear(Integer releaseYear);
 }
