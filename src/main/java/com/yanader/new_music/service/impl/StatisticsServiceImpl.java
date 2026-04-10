@@ -13,11 +13,13 @@ import java.util.List;
 @Service
 public class StatisticsServiceImpl implements StatisticsService {
 
-    @Autowired
-    private YearSetService yearSetService;
-    @Autowired
-    private AlbumService albumService;
+    private final YearSetService yearSetService;
+    private final AlbumService albumService;
 
+    public StatisticsServiceImpl(YearSetService yearSetService, AlbumService albumService) {
+        this.yearSetService = yearSetService;
+        this.albumService = albumService;
+    }
 
     @Override
     public List<Integer> getDistinctListeningYears() {

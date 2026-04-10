@@ -23,16 +23,6 @@ public class AlbumServiceImpl implements AlbumService {
     }
 
     @Override
-    public List<Album> getAlbumsByListeningYear(int listeningYear) {
-        return albumRepository.findByYearSet_ListeningYear(listeningYear);
-    }
-
-    @Override
-    public List<Album> getAlbumsByReleaseYear(int releaseYear) {
-        return albumRepository.findByYearSet_ReleaseYear(releaseYear);
-    }
-
-    @Override
     public Optional<Album> getAlbumById(Long id) {
         return albumRepository.findById(id);
     }

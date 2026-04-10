@@ -12,12 +12,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/stats")
 public class StatsController {
 
-    @Autowired
-    private StatisticsService statsService;
+    private final StatisticsService statsService;
 
-    @Autowired
-    private AlbumService albumService;
-
+    public StatsController(StatisticsService statsService) {
+        this.statsService = statsService;
+    }
 
     @GetMapping
     public Statistics getStats() {

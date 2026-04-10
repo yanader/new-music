@@ -7,8 +7,6 @@ import java.util.Optional;
 
 public interface AlbumService {
     List<Album> getAllAlbums();
-    List<Album> getAlbumsByListeningYear(int listeningYear);
-    List<Album> getAlbumsByReleaseYear(int releaseYear);
     Optional<Album> getAlbumById(Long id);
     List<Album> getAlbumsByListeningYear(Integer listeningYear);
     List<Album> getAlbumsByReleaseYear(Integer releaseYear);

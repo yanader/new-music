@@ -27,9 +27,6 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequest request) {
 
-        System.out.println(name);
-        System.out.println(password);
-
         if (name.equals(request.getUsername()) &&
                 password.equals(request.getPassword())) {
 

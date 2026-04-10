@@ -1,2 +1,1 @@
-# Add a statistics controller to access the Statistics object via the service
-    test that "works" in the branch then write tests
+# Move some of the YearStats calculation methods (mode median etc) to a utils class
