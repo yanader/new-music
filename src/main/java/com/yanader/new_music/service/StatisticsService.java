@@ -8,5 +8,5 @@ import java.util.List;
 public interface StatisticsService {
     List<Integer> getDistinctListeningYears();
     List<Integer> getDistinctReleaseYears();
-    Statistics getStatistics(List<Album> albums);
+    Statistics getStatistics();
 }

@@ -1,9 +1,13 @@
 package com.yanader.new_music.entity;
 
+import lombok.Getter;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
+@Getter
 public class YearStats {
     private Integer year;
     private Integer count;
@@ -16,9 +20,14 @@ public class YearStats {
 
     public YearStats(Integer year, List<Album> albums) {
         this.year = year;
-        this.count = 0;
+        List<Album> yearAlbums = albums.stream()
+                .filter(a -> a.getYearSet() != null
+                        && a.getYearSet().getListeningYear() != null
+                        && a.getYearSet().getListeningYear().equals(year))
+                .toList();
+        this.count = yearAlbums.size();
         this.countSevenPlus = 0;
-        processAlbums(albums);
+        processAlbums(yearAlbums);
     }
 
     private void processAlbums(List<Album> albums) {
@@ -31,11 +40,10 @@ public class YearStats {
             if (rating >= 7) {
                 this.countSevenPlus++;
             }
-            this.count++;
             sum += rating;
             scores.put(rating, scores.getOrDefault(rating, 0) + 1);
         }
-        this.percentSevenPlus = this.countSevenPlus * 1.0 / this.count;
+        this.percentSevenPlus = this.count == 0 ? 0.0 : this.countSevenPlus * 1.0 / this.count;
 
         this.mean = sum * 1.0 / this.count;
 
@@ -59,6 +67,7 @@ public class YearStats {
         List<Integer> ratings = albums.stream().map(Album::getRating).sorted().toList();
 
         int size = ratings.size();
+        if (size == 0) return 0.0;
         if (size % 2 == 1) {
             return ratings.get(size/2) * 1.0;
         } else {
