@@ -1,9 +1,6 @@
 package com.yanader.new_music.utils;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public final class StatsUtil {
 
@@ -30,7 +27,8 @@ public final class StatsUtil {
     }
 
 
-    public static int mode(List<Integer> nums){
+    public static Integer mode(List<Integer> nums){
+        if (nums.isEmpty()) return null;
         Map<Integer, Integer> scores = new HashMap<>();
 
         for (Integer num: nums) {
@@ -49,9 +47,9 @@ public final class StatsUtil {
         return mode;
     }
 
-    public static double stdDev(List<Integer> nums){
+    public static Double stdDev(List<Integer> nums){
 
-        if (nums.size() < 2) return 0.0;
+        if (nums.size() < 2) return null;
 
         double mean = mean(nums);
 
