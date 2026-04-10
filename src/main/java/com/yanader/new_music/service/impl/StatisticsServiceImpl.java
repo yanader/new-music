@@ -33,7 +33,6 @@ public class StatisticsServiceImpl implements StatisticsService {
 
     @Override
     public Statistics getStatistics() {
-
         return new Statistics(albumService.getAllAlbums(), getDistinctListeningYears());
     }
 }
