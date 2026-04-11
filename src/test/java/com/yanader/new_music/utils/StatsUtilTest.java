@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -34,8 +33,7 @@ class StatsUtilTest {
     }
 
     @Test
-    void testMean(){
-        assertEquals(0.0, StatsUtil.mean(emptyList));
+    void shouldCalculateMean(){
         assertEquals(1.0 , StatsUtil.mean(oneItemList));
         assertEquals(1.0 , StatsUtil.mean(identicalList));
         assertEquals(6.4, StatsUtil.mean(oddLengthList));
@@ -46,8 +44,12 @@ class StatsUtilTest {
     }
 
     @Test
-    void testMedian(){
-        assertEquals(0.0 , StatsUtil.median(emptyList));
+    void shouldReturnMeanZeroFromEmptyList(){
+        assertEquals(0.0, StatsUtil.mean(emptyList));
+    }
+
+    @Test
+    void shouldCalculateMedian(){
         assertEquals(1.0 , StatsUtil.median(oneItemList));
         assertEquals(1.0 , StatsUtil.median(identicalList));
         assertEquals(9.0, StatsUtil.median(oddLengthList));
@@ -58,8 +60,12 @@ class StatsUtilTest {
     }
 
     @Test
-    void testMode(){
-        assertNull(StatsUtil.mode(emptyList));
+    void shouldReturnMedianZeroFromEmptyList(){
+        assertEquals(0.0, StatsUtil.mean(emptyList));
+    }
+
+    @Test
+    void shouldCalculateMode(){
         assertEquals(1 , StatsUtil.mode(oneItemList));
         assertEquals(1 , StatsUtil.mode(identicalList));
         assertEquals(9, StatsUtil.mode(oddLengthList));
@@ -70,14 +76,23 @@ class StatsUtilTest {
     }
 
     @Test
-    void testStdDev(){
-        assertNull(StatsUtil.stdDev(emptyList));
-        assertNull(StatsUtil.stdDev(oneItemList));
+    void shouldReturnModeNullFromEmptyList(){
+        assertNull(StatsUtil.mode(emptyList));
+    }
+
+    @Test
+    void shouldCalculateStdDev(){
         assertEquals(0.0, StatsUtil.stdDev(identicalList));
         assertEquals(4.09878030638384, StatsUtil.stdDev(oddLengthList));
         assertEquals(3.9496835316262997, StatsUtil.stdDev(evenLengthList));
         assertEquals(1.6431676725154984, StatsUtil.stdDev(normalListOne));
         assertEquals(3.4641016151377544, StatsUtil.stdDev(normalListTwo));
         assertEquals(3.1144823004794873, StatsUtil.stdDev(normalListThree));
+    }
+
+    @Test
+    void shouldReturnStdDevNullFromEmptyOrOneItemList(){
+        assertNull(StatsUtil.stdDev(emptyList));
+        assertNull(StatsUtil.stdDev(oneItemList));
     }
 }
