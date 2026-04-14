@@ -36,4 +36,7 @@ public class AlbumServiceImpl implements AlbumService {
     public List<Album> getAlbumsByReleaseYear(Integer releaseYear) {
         return albumRepository.findByYearSet_ReleaseYear(releaseYear);
     }
+
+    // This requires logic to get album by ID, combine it with the rating/notes handed in from the controller
+    // and then update the album repo.
 }

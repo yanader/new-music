@@ -34,4 +34,5 @@ build/
 
 application-local.properties
 application-prod.properties
+application-test.properties
 *.env
