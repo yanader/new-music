@@ -1,6 +1,7 @@
 package com.yanader.new_music.service.impl;
 
 import com.yanader.new_music.entity.Album;
+import com.yanader.new_music.entity.dtos.RateAlbumRequestDTO;
 import com.yanader.new_music.repository.AlbumRepository;
 import com.yanader.new_music.service.AlbumService;
 import org.springframework.stereotype.Service;
@@ -35,6 +36,16 @@ public class AlbumServiceImpl implements AlbumService {
     @Override
     public List<Album> getAlbumsByReleaseYear(Integer releaseYear) {
         return albumRepository.findByYearSet_ReleaseYear(releaseYear);
+    }
+
+    @Override
+    public Album rateAlbum(Long id, RateAlbumRequestDTO req) {
+        Optional<Album> optionalAlbum = albumRepository.findById(id);
+        if (optionalAlbum.isEmpty()) return null;
+        Album albumToRate = optionalAlbum.get();
+        albumToRate.setRating(req.rating());
+        albumToRate.setNotes(req.notes());
+        return albumRepository.save(albumToRate);
     }
 
     // This requires logic to get album by ID, combine it with the rating/notes handed in from the controller

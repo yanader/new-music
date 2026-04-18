@@ -1,7 +1,7 @@
 package com.yanader.new_music.repository;
 
 import com.yanader.new_music.entity.Album;
-import com.yanader.new_music.entity.Artist;
+import org.jspecify.annotations.NonNull;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
