@@ -34,7 +34,7 @@ public class AlbumController {
     }
 
     @GetMapping("{id}")
-    public Album getAlbumById(@RequestParam long id) {
+    public Album getAlbumById(@PathVariable long id) {
         /*
         End point to get the details of one album. Will be used ahead of submitting a review
          */
