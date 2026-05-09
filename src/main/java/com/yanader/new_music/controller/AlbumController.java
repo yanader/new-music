@@ -3,6 +3,7 @@ package com.yanader.new_music.controller;
 import com.yanader.new_music.entity.Album;
 import com.yanader.new_music.entity.dtos.RateAlbumRequestDTO;
 import com.yanader.new_music.service.AlbumService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -43,7 +44,7 @@ public class AlbumController {
     }
 
     @PatchMapping("{id}/rating")
-    public Album reviewAlbum(@PathVariable long id, @RequestBody RateAlbumRequestDTO req) {
+    public Album reviewAlbum(@PathVariable long id, @Valid @RequestBody RateAlbumRequestDTO req) {
         /* The end point through which we will submit an album rating and notes to add to the album entity
             Will require:
             Service level logic to get the album (by ID or Name?) from the repo
