@@ -23,4 +23,7 @@ public class YearSet {
 
     @Column(name="release_year",columnDefinition = "SMALLINT")
     private Integer releaseYear;
+
+    @Column(name="notes")
+    private String notes;
 }

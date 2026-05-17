@@ -4,6 +4,7 @@ import com.yanader.new_music.utils.StatsUtil;
 import lombok.Getter;
 
 import java.util.List;
+import java.util.Objects;
 
 @Getter
 public class YearStats {
@@ -15,6 +16,7 @@ public class YearStats {
     private Integer mode;
     private Double median;
     private Double stdDev;
+    private String notes;
 
     public YearStats(Integer year, List<Album> albums) {
         this.year = year;
@@ -25,6 +27,11 @@ public class YearStats {
                 .toList();
         this.count = yearAlbums.size();
         this.countSevenPlus = 0;
+        this.notes = yearAlbums.stream()
+                .map(a -> a.getYearSet().getNotes())
+                .filter(Objects::nonNull)
+                .findFirst()
+                .orElse(null);
         processAlbums(yearAlbums);
     }
 
