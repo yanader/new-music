@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Setter
 @Getter
@@ -37,6 +38,14 @@ public class Album {
 
     @Column(name="listened_on")
     private LocalDate listenedOn;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "suggestions",
+            joinColumns = @JoinColumn(name = "album_id"),
+            inverseJoinColumns = @JoinColumn(name = "contributor_id")
+    )
+    private List<Contributor> contributors;
 
     @Column(name="spotify_album_id")
     private String spotifyAlbumId;

@@ -1,1 +1,5 @@
 # Move some of the YearStats calculation methods (mode median etc) to a utils class
+
+
+
+# Flesh out use of DTO returns for album/stats data
