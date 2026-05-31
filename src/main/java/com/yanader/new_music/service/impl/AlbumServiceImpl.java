@@ -20,7 +20,7 @@ public class AlbumServiceImpl implements AlbumService {
 
     @Override
     public List<Album> getAllAlbums() {
-        return albumRepository.findAll();
+        return albumRepository.findAllWithDetails(); // was findAll()
     }
 
     @Override
