@@ -5,3 +5,5 @@
 * Build out tests and controller logic that takes a csv file and passes it to the service layer
 * integration testing for the above
 * check that I've not manually hidden 2026/27.
+* probably need something to convert between Album and AlbumDTO
+    -   AlbumDTO -> Album but with some blank fields for initialising in the database
