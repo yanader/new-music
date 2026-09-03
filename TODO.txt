@@ -1,5 +1,7 @@
-# Move some of the YearStats calculation methods (mode median etc) to a utils class
-
-
-
-# Flesh out use of DTO returns for album/stats data
+* Build out tests and service layer logic that takes a batch of ArrayList<Album> (or DTOs?),
+    validates them and then saves them individually to the database.
+    - presumably the service layer will receive a csv and then this is where the conversion will happen
+    - what do i do about exception/duplication handling
+* Build out tests and controller logic that takes a csv file and passes it to the service layer
+* integration testing for the above
+* check that I've not manually hidden 2026/27.
