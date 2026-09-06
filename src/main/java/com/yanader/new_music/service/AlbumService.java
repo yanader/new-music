@@ -14,4 +14,5 @@ public interface AlbumService {
     List<Album> getAlbumsByReleaseYear(Integer releaseYear);
     Album rateAlbum(Long id, RateAlbumRequestDTO req);
     Album saveAlbum(AlbumDTO req);
+    List<Album> saveAlbums(List<AlbumDTO> reqs);
 }

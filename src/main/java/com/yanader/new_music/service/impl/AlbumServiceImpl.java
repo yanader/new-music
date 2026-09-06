@@ -1,21 +1,26 @@
 package com.yanader.new_music.service.impl;
 
 import com.yanader.new_music.entity.Album;
+import com.yanader.new_music.entity.dtos.AlbumDTO;
 import com.yanader.new_music.entity.dtos.RateAlbumRequestDTO;
+import com.yanader.new_music.mapper.AlbumMapper;
 import com.yanader.new_music.repository.AlbumRepository;
 import com.yanader.new_music.service.AlbumService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class AlbumServiceImpl implements AlbumService {
 
     private final AlbumRepository albumRepository;
+    private final AlbumMapper mapper;
 
-    public AlbumServiceImpl(AlbumRepository albumRepository) {
+    public AlbumServiceImpl(AlbumRepository albumRepository, AlbumMapper albumMapper) {
         this.albumRepository = albumRepository;
+        this.mapper = albumMapper;
     }
 
     @Override
@@ -48,6 +53,16 @@ public class AlbumServiceImpl implements AlbumService {
         return albumRepository.save(albumToRate);
     }
 
-    // This requires logic to get album by ID, combine it with the rating/notes handed in from the controller
-    // and then update the album repo.
+    @Override
+    public Album saveAlbum(AlbumDTO req) {
+        Album album = mapper.toAlbumEntity(req);
+        return albumRepository.save(album);
+    }
+
+    @Override
+    public List<Album> saveAlbums(List<AlbumDTO> reqs) {
+        return reqs.stream()
+                .map(this::saveAlbum)
+                .collect(Collectors.toList());
+    }
 }
